@@ -1,10 +1,13 @@
 const express = require("express");
 const jwt = require("jsonwebtoken");
+const cors = require("cors");
+
 const app = express();
 
 const SECRET_KEY = "supersecretadmin";
 const JWT_SECRET = "your_jwt_secret";
 
+app.use(cors());
 app.use(express.json());
 
 const verifyJWT = (req, res, next) => {
@@ -39,4 +42,4 @@ app.get("/admin/api/data", verifyJWT, (req, res) => {
   res.json({ message: "Protected route accesseble" });
 });
 
-app.listen(3000, () => console.log("Server is running on 3000"));
+app.listen(5000, () => console.log("Server is running on 5000"));
